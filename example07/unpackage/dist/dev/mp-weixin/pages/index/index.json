@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "uni-app",
+  "usingComponents": {
+    "uni-badge": "../../uni_modules/uni-badge/components/uni-badge/uni-badge"
+  }
+}

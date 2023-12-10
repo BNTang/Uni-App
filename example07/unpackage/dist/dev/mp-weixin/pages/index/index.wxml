@@ -1,0 +1,1 @@
+<view><uni-badge wx:if="{{a}}" u-s="{{['d']}}" u-i="37b682de-0" bind:__l="__l" u-p="{{a}}"><button type="default">左上</button></uni-badge></view>

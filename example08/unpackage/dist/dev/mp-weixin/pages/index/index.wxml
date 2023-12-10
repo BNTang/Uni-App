@@ -1,0 +1,1 @@
+<view><uni-badge wx:if="{{a}}" u-i="fc2fc7c2-0" bind:__l="__l" u-p="{{a}}"></uni-badge><uni-badge wx:if="{{b}}" u-i="fc2fc7c2-1" bind:__l="__l" u-p="{{b}}"></uni-badge><uni-badge wx:if="{{c}}" u-i="fc2fc7c2-2" bind:__l="__l" u-p="{{c}}"></uni-badge></view>
