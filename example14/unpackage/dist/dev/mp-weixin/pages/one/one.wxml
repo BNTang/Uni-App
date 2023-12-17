@@ -1,0 +1,1 @@
+<view><text>one</text><text>=======================</text><button type="default" bindtap="{{a}}">返回上一个界面</button></view>

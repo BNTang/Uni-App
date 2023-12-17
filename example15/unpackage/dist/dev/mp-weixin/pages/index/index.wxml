@@ -1,0 +1,1 @@
+<view><text>{{a}}</text><button type="primary" bindtap="{{b}}">新增</button><button type="primary" bindtap="{{c}}">获取</button><button type="primary" bindtap="{{d}}">删除</button><button type="primary" bindtap="{{e}}">清空</button><button type="primary" bindtap="{{f}}">getStorageInfo</button></view>

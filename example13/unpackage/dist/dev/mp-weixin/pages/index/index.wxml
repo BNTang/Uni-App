@@ -1,0 +1,1 @@
+<view><button data-event-opts="{{[['tap',[['onJumpOne',['$event']]]]]}}" bindtap="__e">navigateTo</button></view>

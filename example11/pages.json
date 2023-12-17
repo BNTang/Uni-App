@@ -1,0 +1,50 @@
+{
+	"pages": [{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "首页",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/one/one",
+			"style": {
+				"navigationBarTitleText": "one",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/two/two",
+			"style": {
+				"navigationBarTitleText": "two",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/three/three",
+			"style": {
+				"navigationBarTitleText": "three",
+				"enablePullDownRefresh": false
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#3cc51f",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"text": "首页"
+		}, {
+			"pagePath": "pages/three/three",
+			"text": "three"
+		}]
+	}
+}
