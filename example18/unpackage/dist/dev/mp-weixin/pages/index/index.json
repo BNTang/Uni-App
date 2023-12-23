@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "uni-app",
+  "usingComponents": {
+    "i-t-button": "../../components/ITButton/ITButton"
+  }
+}

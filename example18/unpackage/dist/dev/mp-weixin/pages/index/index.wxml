@@ -1,0 +1,1 @@
+<view><i-t-button wx:if="{{a}}" u-s="{{['d']}}" u-i="7de9aafe-0" bind:__l="__l" u-p="{{a}}">我是自定义按钮哦</i-t-button></view>

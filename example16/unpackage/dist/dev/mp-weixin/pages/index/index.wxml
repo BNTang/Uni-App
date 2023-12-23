@@ -1,0 +1,1 @@
+<view>{{a}} <button type="primary" bindtap="{{b}}">增加</button><button type="primary" bindtap="{{c}}">减少</button></view>

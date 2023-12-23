@@ -1,0 +1,17 @@
+
+.it-btn {
+		width: 400rpx;
+		height: 150rpx;
+		line-height: 150rpx;
+		font-size: 40rpx;
+		text-align: center;
+}
+.default {
+		background-color: gray;
+}
+.warn {
+		background-color: red;
+}
+.primary {
+		background-color: deepskyblue;
+}

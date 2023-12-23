@@ -1,0 +1,13 @@
+{
+  "hash": "651099bc",
+  "browserHash": "346d49fb",
+  "optimized": {
+    "a-calc": {
+      "src": "../../node_modules/a-calc/es/index.js",
+      "file": "a-calc.js",
+      "fileHash": "957780b1",
+      "needsInterop": false
+    }
+  },
+  "chunks": {}
+}

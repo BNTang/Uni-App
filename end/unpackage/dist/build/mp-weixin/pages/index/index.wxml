@@ -1,0 +1,1 @@
+<view class="content"><view class="result-view"><input class="result-box" type="text" disabled="true" style="{{'font-size:' + a}}" value="{{b}}" bindinput="{{c}}"/></view><view class="btns-view"><view wx:for="{{d}}" wx:for-item="item" wx:key="b" class="{{['btn-radius', item.c]}}" bindtap="{{item.d}}">{{item.a}}</view></view></view>

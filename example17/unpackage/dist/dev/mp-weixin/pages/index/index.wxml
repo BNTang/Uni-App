@@ -1,0 +1,1 @@
+<view><button type="primary" bindtap="{{a}}">发送Get请求</button><button type="primary" bindtap="{{b}}">发送Post请求</button></view>
