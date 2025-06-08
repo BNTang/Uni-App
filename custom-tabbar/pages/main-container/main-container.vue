@@ -77,9 +77,10 @@
             <view class="tab-icon-container">
               <image 
                 class="tab-icon-image"
-                :src="selectedIndex === index ? item.selectedIconPath : item.iconPath"
+                :src="getIconSrc(item, index)"
                 mode="aspectFit"
                 :class="{ active: selectedIndex === index }"
+                :key="`icon-${index}-${gifPlayStatus[index] || 'static'}`"
               />
             </view>
             <!-- 文字标签 -->
@@ -108,10 +109,11 @@ import CartPage from '@/pages/cart/index.vue'
 import UserPage from '@/pages/user/index.vue'
 
 // 响应式数据
-const selectedIndex = ref(1)
+const selectedIndex = ref(0)
 const showArrow = ref(false)
 const tabViewHeight = ref(0)
 const lastScrollTop = ref(0)
+const gifPlayStatus = ref({}) // 记录每个tab的GIF播放状态
 
 // Tab配置
 const tabConfig = [
@@ -120,33 +122,89 @@ const tabConfig = [
     iconPath: '/static/tabbar/ai.png',
     selectedIconPath: '/static/icons/ai-robot.gif',
     text: 'Ai我',
-    init: false,
+    init: true,
     isSpecial: true  // 标记为特殊图标
   },
   { 
     component: CategoryPage, 
     iconPath: '/static/tabbar/hotspot.png',
     selectedIconPath: '/static/icons/hotspot.gif',
+    selectedIconEndFrame: '/static/icons/hotspot-end.png', // 最后一帧静态图
     text: '热点',
-    init: true
+    init: false,
+    gifDuration: 240 // 自定义播放时长（毫秒）
   },
   { 
     component: CartPage, 
     iconPath: '/static/tabbar/chat.png',
     selectedIconPath: '/static/icons/chat.gif',
+    selectedIconEndFrame: '/static/icons/chat-end.png', // 最后一帧静态图
     text: '聊天',
-    init: false
+    init: false,
+    gifDuration: 240 // 自定义播放时长（毫秒）
   },
   { 
     component: UserPage, 
     iconPath: '/static/tabbar/user.png',
     selectedIconPath: '/static/icons/user.gif',
+    selectedIconEndFrame: '/static/icons/user-end.png', // 最后一帧静态图
     text: '我的',
-    init: false
+    init: false,
+    gifDuration: 240 // 自定义播放时长（毫秒）
   }
 ]
 
 const tabList = ref(tabConfig)
+
+// 获取图标源路径
+const getIconSrc = (item, index) => {
+  if (selectedIndex.value !== index) {
+    // 未选中时显示普通图标
+    return item.iconPath
+  }
+  
+  // 选中时的逻辑
+  if (index === 0) {
+    // AI特殊处理，直接返回GIF
+    return item.selectedIconPath
+  }
+  
+  // 其他tab的GIF控制逻辑
+  const playStatus = gifPlayStatus.value[index]
+  if (playStatus === 'playing') {
+    return item.selectedIconPath // 显示GIF
+  } else if (playStatus === 'ended') {
+    return item.selectedIconEndFrame // 显示最后一帧
+  } else {
+    return item.selectedIconPath // 首次选中显示GIF
+  }
+}
+
+// 处理GIF播放
+const handleGifPlayback = (index) => {
+  const config = tabConfig[index]
+  
+  // 每次切换都重新播放GIF，不再检查是否已播放过
+  // 开始播放GIF
+  gifPlayStatus.value[index] = 'playing'
+  
+  // 使用配置中的自定义播放时长
+  const duration = config.gifDuration || 1000 // 默认1秒
+  
+  console.log(`🎬 ${config.text} GIF开始播放，时长: ${duration}ms`)
+  
+  // 播放完成后切换到最后一帧
+  setTimeout(() => {
+    gifPlayStatus.value[index] = 'ended'
+    console.log(`🎯 ${config.text} GIF播放完成，显示最后一帧`)
+  }, duration)
+}
+
+// 重置所有GIF播放状态（用于测试）
+const resetAllGifStatus = () => {
+  gifPlayStatus.value = {}
+  console.log('🔄 所有GIF播放状态已重置')
+}
 
 
 
@@ -187,6 +245,8 @@ const onTabClick = (index) => {
     return
   }
   
+  const previousIndex = selectedIndex.value
+  
   // 如果切换到非首页，隐藏箭头
   if (index !== 0) {
     showArrow.value = false
@@ -195,12 +255,22 @@ const onTabClick = (index) => {
     showArrow.value = lastScrollTop.value > tabViewHeight.value
   }
   
+  // 重置前一个tab的GIF状态（除了AI tab）
+  if (previousIndex !== 0 && tabConfig[previousIndex].selectedIconPath.includes('.gif')) {
+    delete gifPlayStatus.value[previousIndex]
+  }
+  
   // 懒加载：首次点击时初始化页面
   if (!tabList.value[index].init) {
     tabList.value[index].init = true
   }
   
   selectedIndex.value = index
+  
+  // 控制GIF播放（除了AI tab）
+  if (index !== 0 && tabConfig[index].selectedIconPath.includes('.gif')) {
+    handleGifPlayback(index)
+  }
 }
 
 
