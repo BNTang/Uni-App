@@ -126,21 +126,21 @@ const tabConfig = [
   { 
     component: CategoryPage, 
     iconPath: '/static/tabbar/hotspot.png',
-    selectedIconPath: '/static/tabbar/category-active.png',
+    selectedIconPath: '/static/icons/hotspot.gif',
     text: '热点',
     init: true
   },
   { 
     component: CartPage, 
     iconPath: '/static/tabbar/chat.png',
-    selectedIconPath: '/static/tabbar/chat-active.png',
+    selectedIconPath: '/static/icons/chat.gif',
     text: '聊天',
     init: false
   },
   { 
     component: UserPage, 
     iconPath: '/static/tabbar/user.png',
-    selectedIconPath: '/static/tabbar/user-active.png',
+    selectedIconPath: '/static/icons/user.gif',
     text: '我的',
     init: false
   }
