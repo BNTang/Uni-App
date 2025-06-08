@@ -174,7 +174,7 @@ const getIconSrc = (item, index) => {
   if (playStatus === 'playing') {
     return item.selectedIconPath // 显示GIF
   } else if (playStatus === 'ended') {
-    return item.selectedIconEndFrame // 显示最后一帧
+    return item.selectedIconEndFrame || item.selectedIconPath // 显示最后一帧，如果没有则继续显示GIF
   } else {
     return item.selectedIconPath // 首次选中显示GIF
   }
@@ -193,11 +193,14 @@ const handleGifPlayback = (index) => {
   
   console.log(`🎬 ${config.text} GIF开始播放，时长: ${duration}ms`)
   
-  // 播放完成后切换到最后一帧
-  setTimeout(() => {
-    gifPlayStatus.value[index] = 'ended'
-    console.log(`🎯 ${config.text} GIF播放完成，显示最后一帧`)
-  }, duration)
+  // 只有配置了最后一帧图片才进行切换
+  if (config.selectedIconEndFrame) {
+    // 播放完成后切换到最后一帧
+    setTimeout(() => {
+      gifPlayStatus.value[index] = 'ended'
+      console.log(`🎯 ${config.text} GIF播放完成，显示最后一帧`)
+    }, duration)
+  }
 }
 
 // 重置所有GIF播放状态（用于测试）
@@ -414,6 +417,7 @@ const onPageScroll = (event) => {
 .tab-icon-image {
   width: 44rpx;
   height: 44rpx;
+  transition: all 0.1s ease-out; /* 添加平滑过渡 */
 }
 
 .tab-icon-image.active {
@@ -460,12 +464,14 @@ const onPageScroll = (event) => {
   height: 100%;
   border-radius: 12rpx;
   object-fit: cover;
+  transition: opacity 0.1s ease-out; /* 添加平滑过渡 */
 }
 
 /* 未选中时的PNG图标 - 普通尺寸 */
 .ai-png-icon {
   width: 44rpx;
   height: 44rpx;
+  transition: all 0.1s ease-out; /* 添加平滑过渡 */
 }
 
 /* 动画图标基础样式 */
