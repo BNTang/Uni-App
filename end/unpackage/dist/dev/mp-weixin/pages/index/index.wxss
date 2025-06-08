@@ -37,7 +37,7 @@
   position: relative;
 }
 .content .result-view .result-box {
-  height: 30%;
+  min-height: 180rpx;
   text-align: right;
   color: white;
   position: absolute;
