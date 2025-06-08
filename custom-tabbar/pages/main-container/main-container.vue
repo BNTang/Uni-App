@@ -407,9 +407,12 @@ const onPageScroll = (event) => {
   min-height: 120rpx;
 }
 
+/* 禁用H5端的tab-item动画，避免回弹效果 */
+/* #ifndef H5 */
 .tab-item.active {
   transform: translateY(0);
 }
+/* #endif */
 
 /* 图标容器 */
 .tab-icon-container {
@@ -421,9 +424,12 @@ const onPageScroll = (event) => {
   justify-content: center;
 }
 
+/* 禁用H5端的图标容器缩放，避免回弹效果 */
+/* #ifndef H5 */
 .tab-item.active .tab-icon-container {
   transform: scale(1);
 }
+/* #endif */
 
 /* 图标样式 */
 .tab-icon {
@@ -449,9 +455,12 @@ const onPageScroll = (event) => {
   transition: all 0.1s ease-out; /* 添加平滑过渡 */
 }
 
+/* 非H5端的图标缩放效果 */
+/* #ifndef H5 */
 .tab-icon-image.active {
   transform: scale(1);
 }
+/* #endif */
 
 /* 特殊的AI图标样式 */
 .ai-special-container {
@@ -483,9 +492,12 @@ const onPageScroll = (event) => {
   width: 140rpx;
 }
 
+/* 禁用H5端的AI图标容器缩放，避免回弹效果 */
+/* #ifndef H5 */
 .ai-icon-container.active {
   transform: scale(1);
 }
+/* #endif */
 
 /* 选中时的GIF图标 - 大尺寸，铺满容器 */
 .ai-gif-icon {
@@ -503,7 +515,8 @@ const onPageScroll = (event) => {
   transition: all 0.1s ease-out; /* 添加平滑过渡 */
 }
 
-/* 微信小程序兼容的简单动画效果 */
+/* 微信小程序兼容的简单动画效果 - 仅在小程序端生效 */
+/* #ifndef H5 */
 .tab-icon-image.active {
   animation: simpleScale 0.2s ease-in-out;
 }
@@ -519,6 +532,7 @@ const onPageScroll = (event) => {
     transform: scale(1);
   }
 }
+/* #endif */
 
 /* 文字样式 */
 .tab-text {
@@ -539,6 +553,12 @@ const onPageScroll = (event) => {
 
 /* H5端适配 */
 /* #ifdef H5 */
+/* H5端禁用所有可能引起回弹的动画和transform */
+.tab-item {
+  transform: none !important;
+  animation: none !important;
+}
+
 .custom-tabbar {
   height: 80px;
 }
@@ -560,9 +580,15 @@ const onPageScroll = (event) => {
   font-size: 22px;
 }
 
+/* H5端禁用回弹动画，只保留平滑过渡 */
 .tab-icon-image {
   width: 22px;
   height: 22px;
+  transition: transform 0.15s ease-out; /* 只使用transform过渡，避免回弹 */
+}
+
+.tab-icon-image.active {
+  transform: scale(1.05); /* 轻微缩放，避免过度动画 */
 }
 
 .tab-icon-container {
@@ -575,6 +601,7 @@ const onPageScroll = (event) => {
   margin-bottom: 2px;
   height: 30px;
   width: auto;
+  transition: all 0.15s ease-out;
 }
 
 /* 选中时的AI图标容器 - 大尺寸 */
@@ -582,6 +609,7 @@ const onPageScroll = (event) => {
   margin-bottom: 2px;
   height: 50px;
   width: 70px;
+  transition: all 0.15s ease-out;
 }
 
 .ai-gif-icon {
@@ -600,6 +628,7 @@ const onPageScroll = (event) => {
 
 .tab-text {
   font-size: 8px;
+  transition: color 0.15s ease-out; /* 添加文字颜色过渡 */
 }
 
 /* #endif */

@@ -107,6 +107,7 @@
   transform: translateY(0);
   min-height: 120rpx;
 }
+/* 禁用H5端的tab-item动画，避免回弹效果 */
 .tab-item.active.data-v-8fc075b2 {
   transform: translateY(0);
 }
@@ -119,6 +120,7 @@
   align-items: center;
   justify-content: center;
 }
+/* 禁用H5端的图标容器缩放，避免回弹效果 */
 .tab-item.active .tab-icon-container.data-v-8fc075b2 {
   transform: scale(1);
 }
@@ -142,6 +144,7 @@
   height: 44rpx;
   transition: all 0.1s ease-out; /* 添加平滑过渡 */
 }
+/* 非H5端的图标缩放效果 */
 .tab-icon-image.active.data-v-8fc075b2 {
   transform: scale(1);
 }
@@ -171,6 +174,7 @@
   height: 100rpx;
   width: 140rpx;
 }
+/* 禁用H5端的AI图标容器缩放，避免回弹效果 */
 .ai-icon-container.active.data-v-8fc075b2 {
   transform: scale(1);
 }
@@ -188,7 +192,7 @@
   height: 44rpx;
   transition: all 0.1s ease-out; /* 添加平滑过渡 */
 }
-/* 微信小程序兼容的简单动画效果 */
+/* 微信小程序兼容的简单动画效果 - 仅在小程序端生效 */
 .tab-icon-image.active.data-v-8fc075b2 {
   animation: simpleScale-8fc075b2 0.2s ease-in-out;
 }
@@ -215,6 +219,21 @@
   font-weight: 500;
 }
 /* H5端适配 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
