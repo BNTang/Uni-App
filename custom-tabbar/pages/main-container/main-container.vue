@@ -11,7 +11,6 @@
       >
         <IndexPage 
           ref="tab-0"
-          @scroll="onPageScroll"
         />
       </view>
       
@@ -23,7 +22,6 @@
       >
         <CategoryPage 
           ref="tab-1"
-          @scroll="onPageScroll"
         />
       </view>
       
@@ -35,7 +33,6 @@
       >
         <CartPage 
           ref="tab-2"
-          @scroll="onPageScroll"
         />
       </view>
       
@@ -47,7 +44,6 @@
       >
         <UserPage 
           ref="tab-3"
-          @scroll="onPageScroll"
         />
       </view>
     </view>
@@ -69,16 +65,8 @@
             v-if="index === 0 && item.isSpecial" 
             class="ai-special-container"
           >
-            <!-- 滚动箭头 -->
-            <text 
-              v-if="showArrow"
-              class="tab-icon arrow-icon"
-              :class="{ active: selectedIndex === index }"
-            >
-              ⬆️
-            </text>
             <!-- AI图标容器 -->
-            <view v-else class="ai-icon-container" :class="{ active: selectedIndex === index }">
+            <view class="ai-icon-container" :class="{ active: selectedIndex === index }">
               <!-- 选中时显示GIF -->
               <image 
                 v-if="selectedIndex === index"
@@ -94,9 +82,9 @@
                 mode="aspectFit"
               />
             </view>
-            <!-- 文字标签 - 只在未选中时显示 -->
+            <!-- 文字标签 -->
             <text 
-              v-if="!showArrow && selectedIndex !== index"
+              v-if="selectedIndex !== index"
               class="tab-text"
               :class="{ active: selectedIndex === index }"
             >
@@ -133,7 +121,7 @@
 </template>
 
 <script setup>
-import { ref, computed, onMounted, onUnmounted, nextTick } from 'vue'
+import { ref, computed, onMounted, onUnmounted } from 'vue'
 
 // 导入页面组件
 import IndexPage from '@/pages/index/index.vue'
@@ -143,9 +131,6 @@ import UserPage from '@/pages/user/index.vue'
 
 // 响应式数据
 const selectedIndex = ref(0)
-const showArrow = ref(false)
-const tabViewHeight = ref(0)
-const lastScrollTop = ref(0)
 const gifPlayStatus = ref({}) // 记录每个tab的GIF播放状态
 
 // Tab配置 - 微信小程序兼容版本
@@ -242,35 +227,18 @@ const resetAllGifStatus = () => {
 
 // 生命周期
 onMounted(() => {
-  initContainer()
-  // 监听页面滚动事件
-  uni.$on('pageScroll', onPageScrollEvent)
+  // 页面初始化
 })
 
 onUnmounted(() => {
-  uni.$off('pageScroll', onPageScrollEvent)
+  // 页面销毁
 })
 
-// 初始化容器
-const initContainer = async () => {
-  await nextTick()
-  // 获取容器高度用于判断是否显示箭头
-  uni.createSelectorQuery().in(this).select('.tab-view').boundingClientRect((data) => {
-    if (data) {
-      tabViewHeight.value = data.height
-    }
-  }).exec()
-}
+
 
 // Tab点击处理
 const onTabClick = (index) => {
   console.log(`🔄 点击Tab: ${index}`)
-  
-  // 如果点击的是当前首页且显示箭头，则回到顶部
-  if (selectedIndex.value === index && index === 0 && showArrow.value) {
-    scrollToTop()
-    return
-  }
   
   // 如果点击的是同一个tab，不需要切换
   if (selectedIndex.value === index) {
@@ -278,14 +246,6 @@ const onTabClick = (index) => {
   }
   
   const previousIndex = selectedIndex.value
-  
-  // 如果切换到非首页，隐藏箭头
-  if (index !== 0) {
-    showArrow.value = false
-  } else if (index === 0 && selectedIndex.value !== 0) {
-    // 切回首页时，根据之前的滚动位置决定是否显示箭头
-    showArrow.value = lastScrollTop.value > tabViewHeight.value
-  }
   
   // 重置前一个tab的GIF状态（除了AI tab）
   if (previousIndex !== 0 && tabConfig[previousIndex].selectedIconPath.includes('.gif')) {
@@ -307,31 +267,7 @@ const onTabClick = (index) => {
 
 
 
-// 页面滚动事件处理
-const onPageScrollEvent = (scrollTop) => {
-  if (selectedIndex.value === 0) { // 只有首页才处理滚动
-    showArrow.value = scrollTop > tabViewHeight.value
-    lastScrollTop.value = scrollTop
-  }
-}
 
-// 滚动到顶部
-const scrollToTop = () => {
-  showArrow.value = false
-  // 通知首页滚动到顶部
-  const tab0 = this.$refs['tab-0']
-  if (tab0 && tab0[0] && typeof tab0[0].scrollToTop === 'function') {
-    tab0[0].scrollToTop()
-  }
-}
-
-
-// 页面滚动回调
-const onPageScroll = (event) => {
-  if (selectedIndex.value === 0) {
-    onPageScrollEvent(event.detail?.scrollTop || 0)
-  }
-}
 </script>
 
 <style scoped>
@@ -442,11 +378,7 @@ const onPageScroll = (event) => {
   color: #007aff;
 }
 
-.arrow-icon {
-  font-size: 60rpx !important;
-  font-weight: bold;
-  color: #ff4757 !important;
-}
+
 
 /* PNG图标样式 */
 .tab-icon-image {
@@ -622,9 +554,7 @@ const onPageScroll = (event) => {
   height: 22px;
 }
 
-.arrow-icon {
-  font-size: 30px !important;
-}
+
 
 .tab-text {
   font-size: 8px;

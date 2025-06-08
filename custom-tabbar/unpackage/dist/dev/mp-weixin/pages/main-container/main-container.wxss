@@ -133,11 +133,6 @@
 .tab-icon.active.data-v-8fc075b2 {
   color: #007aff;
 }
-.arrow-icon.data-v-8fc075b2 {
-  font-size: 60rpx !important;
-  font-weight: bold;
-  color: #ff4757 !important;
-}
 /* PNG图标样式 */
 .tab-icon-image.data-v-8fc075b2 {
   width: 44rpx;
@@ -219,8 +214,6 @@
   font-weight: 500;
 }
 /* H5端适配 */
-
-
 
 
 
