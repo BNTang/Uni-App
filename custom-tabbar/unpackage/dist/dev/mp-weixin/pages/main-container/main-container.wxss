@@ -1,0 +1,282 @@
+
+/* 导入图标字体 */
+/* 使用系统默认字体，通过Unicode字符显示图标 */
+.uni-icon.data-v-8fc075b2 {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+}
+/* 图标字符映射 - 使用emoji和特殊字符 */
+.icon-home.data-v-8fc075b2:before { content: '🏠';
+}
+/* 首页图标 */
+.icon-category.data-v-8fc075b2:before { content: '📂';
+}
+/* 分类图标 */
+.icon-cart.data-v-8fc075b2:before { content: '🛒';
+}
+/* 购物车图标 */
+.icon-user.data-v-8fc075b2:before { content: '👤';
+}
+/* 用户图标 */
+.icon-arrow-up.data-v-8fc075b2:before { content: '⬆️';
+}
+/* 向上箭头 */
+.icon-add.data-v-8fc075b2:before { content: '➕';
+}
+/* 加号图标 */
+/* 为了兼容，也定义Unicode编码版本 */
+.unicode-home.data-v-8fc075b2 { content: '\1F3E0';
+}
+/* 🏠 */
+.unicode-category.data-v-8fc075b2 { content: '\1F4C2';
+}
+/* 📂 */
+.unicode-cart.data-v-8fc075b2 { content: '\1F6D2';
+}
+/* 🛒 */
+.unicode-user.data-v-8fc075b2 { content: '\1F464';
+}
+/* 👤 */
+.unicode-arrow-up.data-v-8fc075b2 { content: '\2B06\FE0F';
+}
+/* ⬆️ */
+.unicode-add.data-v-8fc075b2 { content: '\2795';
+}
+/* ➕ */
+/* 主容器 */
+.main-container.data-v-8fc075b2 {
+  width: 100vw;
+  height: 100vh;
+  background-color: #fff;
+  overflow: hidden;
+  position: relative;
+}
+/* 内容区域 */
+.tab-view.data-v-8fc075b2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 160rpx; /* 为底部TabBar留出空间 */
+  overflow: hidden;
+
+  bottom: calc(160rpx + env(safe-area-inset-bottom));
+}
+.tab-page.data-v-8fc075b2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+/* 自定义底部导航栏 */
+.custom-tabbar.data-v-8fc075b2 {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 160rpx;
+  z-index: 1000;
+  background-color: #ffffff;
+  border-top: 1rpx solid #e5e5e5;
+  box-shadow: 0 -4rpx 12rpx rgba(0, 0, 0, 0.1);
+
+  padding-bottom: env(safe-area-inset-bottom);
+}
+/* 导航内容 */
+.tabbar-content.data-v-8fc075b2 {
+  width: 100%;
+  height: 160rpx;
+  display: flex;
+  align-items: center;
+  padding: 0 20rpx;
+}
+/* 导航项 */
+.tab-item.data-v-8fc075b2 {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10rpx 10rpx 10rpx 10rpx;
+  transform: translateY(0);
+  min-height: 120rpx;
+}
+.tab-item.active.data-v-8fc075b2 {
+  transform: translateY(0);
+}
+/* 图标容器 */
+.tab-icon-container.data-v-8fc075b2 {
+  position: relative;
+  margin-bottom: 4rpx;
+  height: 60rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tab-item.active .tab-icon-container.data-v-8fc075b2 {
+  transform: scale(1);
+}
+/* 图标样式 */
+.tab-icon.data-v-8fc075b2 {
+  font-size: 44rpx;
+  color: #999;
+  display: inline-block;
+}
+.tab-icon.active.data-v-8fc075b2 {
+  color: #007aff;
+}
+.arrow-icon.data-v-8fc075b2 {
+  font-size: 60rpx !important;
+  font-weight: bold;
+  color: #ff4757 !important;
+}
+/* PNG图标样式 */
+.tab-icon-image.data-v-8fc075b2 {
+  width: 44rpx;
+  height: 44rpx;
+  transition: all 0.1s ease-out; /* 添加平滑过渡 */
+}
+.tab-icon-image.active.data-v-8fc075b2 {
+  transform: scale(1);
+}
+/* 特殊的AI图标样式 */
+.ai-special-container.data-v-8fc075b2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+}
+.ai-icon-container.data-v-8fc075b2 {
+  position: relative;
+  margin-bottom: 4rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* 未选中时的AI图标容器 - 小尺寸 */
+.ai-icon-container.data-v-8fc075b2:not(.active) {
+  height: 60rpx;
+  width: auto;
+}
+/* 选中时的AI图标容器 - 大尺寸 */
+.ai-icon-container.active.data-v-8fc075b2 {
+  height: 100rpx;
+  width: 140rpx;
+}
+.ai-icon-container.active.data-v-8fc075b2 {
+  transform: scale(1);
+}
+/* 选中时的GIF图标 - 大尺寸，铺满容器 */
+.ai-gif-icon.data-v-8fc075b2 {
+  width: 100%;
+  height: 100%;
+  border-radius: 12rpx;
+  object-fit: cover;
+  transition: opacity 0.1s ease-out; /* 添加平滑过渡 */
+}
+/* 未选中时的PNG图标 - 普通尺寸 */
+.ai-png-icon.data-v-8fc075b2 {
+  width: 44rpx;
+  height: 44rpx;
+  transition: all 0.1s ease-out; /* 添加平滑过渡 */
+}
+/* 微信小程序兼容的简单动画效果 */
+.tab-icon-image.active.data-v-8fc075b2 {
+  animation: simpleScale-8fc075b2 0.2s ease-in-out;
+}
+@keyframes simpleScale-8fc075b2 {
+0% {
+    transform: scale(1);
+}
+50% {
+    transform: scale(1.1);
+}
+100% {
+    transform: scale(1);
+}
+}
+/* 文字样式 */
+.tab-text.data-v-8fc075b2 {
+  font-size: 16rpx;
+  color: #999;
+  text-align: center;
+  margin-top: 2rpx;
+}
+.tab-text.active.data-v-8fc075b2 {
+  color: #ff4757;
+  font-weight: 500;
+}
+/* H5端适配 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -3,17 +3,50 @@
     <!-- 内容区域 -->
     <view ref="tabView" class="tab-view">
       <!-- 性能优化：首次使用v-if创建，后续使用visibility控制 -->
+      <!-- 首页 -->
       <view 
-        v-for="(tab, index) in tabList" 
-        :key="index"
         class="tab-page"
-        v-if="tab.init"
-        :style="{ visibility: selectedIndex === index ? 'visible' : 'hidden' }"
+        v-if="tabList[0].init"
+        :style="{ visibility: selectedIndex === 0 ? 'visible' : 'hidden' }"
       >
-        <!-- 动态组件加载 -->
-        <component 
-          :is="tab.component" 
-          :ref="`tab-${index}`"
+        <IndexPage 
+          ref="tab-0"
+          @scroll="onPageScroll"
+        />
+      </view>
+      
+      <!-- 热点页 -->
+      <view 
+        class="tab-page"
+        v-if="tabList[1].init"
+        :style="{ visibility: selectedIndex === 1 ? 'visible' : 'hidden' }"
+      >
+        <CategoryPage 
+          ref="tab-1"
+          @scroll="onPageScroll"
+        />
+      </view>
+      
+      <!-- 聊天页 -->
+      <view 
+        class="tab-page"
+        v-if="tabList[2].init"
+        :style="{ visibility: selectedIndex === 2 ? 'visible' : 'hidden' }"
+      >
+        <CartPage 
+          ref="tab-2"
+          @scroll="onPageScroll"
+        />
+      </view>
+      
+      <!-- 我的页 -->
+      <view 
+        class="tab-page"
+        v-if="tabList[3].init"
+        :style="{ visibility: selectedIndex === 3 ? 'visible' : 'hidden' }"
+      >
+        <UserPage 
+          ref="tab-3"
           @scroll="onPageScroll"
         />
       </view>
@@ -115,42 +148,38 @@ const tabViewHeight = ref(0)
 const lastScrollTop = ref(0)
 const gifPlayStatus = ref({}) // 记录每个tab的GIF播放状态
 
-// Tab配置
+// Tab配置 - 微信小程序兼容版本
 const tabConfig = [
   { 
-    component: IndexPage, 
     iconPath: '/static/tabbar/ai.png',
-    selectedIconPath: '/static/icons/ai-robot.gif',
+    selectedIconPath: '/static/icons/ai-robot.gif', // AI使用GIF
     text: 'Ai我',
     init: true,
     isSpecial: true  // 标记为特殊图标
   },
   { 
-    component: CategoryPage, 
     iconPath: '/static/tabbar/hotspot.png',
-    selectedIconPath: '/static/icons/hotspot.gif',
+    selectedIconPath: '/static/icons/hotspot.gif', // 恢复使用GIF，确保显示正常
     selectedIconEndFrame: '/static/icons/hotspot-end.png', // 最后一帧静态图
     text: '热点',
     init: false,
-    gifDuration: 240 // 自定义播放时长（毫秒）
+    gifDuration: 240
   },
   { 
-    component: CartPage, 
     iconPath: '/static/tabbar/chat.png',
-    selectedIconPath: '/static/icons/chat.gif',
+    selectedIconPath: '/static/icons/chat.gif', // 恢复使用GIF，确保显示正常
     selectedIconEndFrame: '/static/icons/chat-end.png', // 最后一帧静态图
     text: '聊天',
     init: false,
-    gifDuration: 240 // 自定义播放时长（毫秒）
+    gifDuration: 240
   },
   { 
-    component: UserPage, 
     iconPath: '/static/tabbar/user.png',
-    selectedIconPath: '/static/icons/user.gif',
+    selectedIconPath: '/static/icons/user.gif', // 恢复使用GIF，确保显示正常
     selectedIconEndFrame: '/static/icons/user-end.png', // 最后一帧静态图
     text: '我的',
     init: false,
-    gifDuration: 240 // 自定义播放时长（毫秒）
+    gifDuration: 240
   }
 ]
 
@@ -184,7 +213,7 @@ const getIconSrc = (item, index) => {
 const handleGifPlayback = (index) => {
   const config = tabConfig[index]
   
-  // 每次切换都重新播放GIF，不再检查是否已播放过
+  // 每次切换都重新播放GIF
   // 开始播放GIF
   gifPlayStatus.value[index] = 'playing'
   
@@ -203,7 +232,7 @@ const handleGifPlayback = (index) => {
   }
 }
 
-// 重置所有GIF播放状态（用于测试）
+// 重置所有GIF播放状态
 const resetAllGifStatus = () => {
   gifPlayStatus.value = {}
   console.log('🔄 所有GIF播放状态已重置')
@@ -474,113 +503,19 @@ const onPageScroll = (event) => {
   transition: all 0.1s ease-out; /* 添加平滑过渡 */
 }
 
-/* 动画图标基础样式 */
-.animated-icon {
-  transform-origin: center;
-  backface-visibility: hidden;
+/* 微信小程序兼容的简单动画效果 */
+.tab-icon-image.active {
+  animation: simpleScale 0.2s ease-in-out;
 }
 
-/* 脉冲动画 */
-.animation-pulse.animation-active {
-  animation: iconPulse 1.5s ease-in-out infinite;
-}
-
-@keyframes iconPulse {
-  0%, 100% {
+@keyframes simpleScale {
+  0% {
     transform: scale(1);
-    opacity: 1;
   }
   50% {
-    transform: scale(1.2);
-    opacity: 0.8;
-  }
-}
-
-/* 旋转动画 */
-.animation-rotate.animation-active {
-  animation: iconRotate 1s linear;
-}
-
-@keyframes iconRotate {
-  0% {
-    transform: rotate(0deg);
+    transform: scale(1.1);
   }
   100% {
-    transform: rotate(360deg);
-  }
-}
-
-/* 弹跳动画 */
-.animation-bounce.animation-active {
-  animation: iconBounce 1s ease-in-out;
-}
-
-@keyframes iconBounce {
-  0%, 100% {
-    transform: translateY(0);
-  }
-  25% {
-    transform: translateY(-8rpx);
-  }
-  50% {
-    transform: translateY(0);
-  }
-  75% {
-    transform: translateY(-4rpx);
-  }
-}
-
-/* 彩虹颜色动画 */
-.animation-rainbow.animation-active {
-  animation: iconRainbow 2s ease-in-out;
-}
-
-@keyframes iconRainbow {
-  0% { color: #ff0000; }      /* 红 */
-  16.66% { color: #ff8800; }  /* 橙 */
-  33.33% { color: #ffff00; }  /* 黄 */
-  50% { color: #00ff00; }     /* 绿 */
-  66.66% { color: #0088ff; }  /* 蓝 */
-  83.33% { color: #8800ff; }  /* 靛 */
-  100% { color: #ff0088; }    /* 紫 */
-}
-
-/* 摇摆动画 */
-.animation-swing.animation-active {
-  animation: iconSwing 1.5s ease-in-out infinite;
-}
-
-@keyframes iconSwing {
-  0%, 100% {
-    transform: rotate(0deg);
-  }
-  25% {
-    transform: rotate(10deg);
-  }
-  75% {
-    transform: rotate(-10deg);
-  }
-}
-
-/* 心跳动画 */
-.animation-heartbeat.animation-active {
-  animation: iconHeartbeat 1.2s ease-in-out infinite;
-}
-
-@keyframes iconHeartbeat {
-  0% {
-    transform: scale(1);
-  }
-  14% {
-    transform: scale(1.3);
-  }
-  28% {
-    transform: scale(1);
-  }
-  42% {
-    transform: scale(1.3);
-  }
-  70% {
     transform: scale(1);
   }
 }
@@ -598,7 +533,7 @@ const onPageScroll = (event) => {
   font-weight: 500;
 }
 
-/* GIF图标不需要额外动画，只保持基本的缩放效果 */
+
 
 
 

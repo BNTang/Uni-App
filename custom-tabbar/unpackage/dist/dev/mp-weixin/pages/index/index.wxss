@@ -1,0 +1,144 @@
+
+.page-scroll.data-v-1cf27b2a {
+		height: 100%;
+		width: 100%;
+}
+.content.data-v-1cf27b2a {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		padding: 40rpx 20rpx;
+		min-height: 100vh;
+}
+
+	/* 滚动内容区域 */
+.scroll-content.data-v-1cf27b2a {
+		width: 100%;
+		max-width: 500rpx;
+		margin-top: 40rpx;
+}
+.scroll-item.data-v-1cf27b2a {
+		background-color: #fff;
+		border-radius: 16rpx;
+		padding: 30rpx;
+		margin-bottom: 20rpx;
+		box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.1);
+		border: 1rpx solid #f0f0f0;
+}
+.item-title.data-v-1cf27b2a {
+		font-size: 32rpx;
+		font-weight: bold;
+		color: #333;
+		display: block;
+		margin-bottom: 16rpx;
+}
+.item-content.data-v-1cf27b2a {
+		font-size: 26rpx;
+		color: #666;
+		line-height: 1.6;
+		display: block;
+}
+
+	/* 底部留白 */
+.bottom-spacer.data-v-1cf27b2a {
+		height: 40rpx;
+		width: 100%;
+}
+.logo.data-v-1cf27b2a {
+		height: 160rpx;
+		width: 160rpx;
+		margin: 60rpx auto 30rpx;
+}
+.text-area.data-v-1cf27b2a {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		margin-bottom: 60rpx;
+}
+.title.data-v-1cf27b2a {
+		font-size: 36rpx;
+		color: #333;
+		margin-bottom: 10rpx;
+}
+.subtitle.data-v-1cf27b2a {
+		font-size: 28rpx;
+		color: #666;
+}
+.test-buttons.data-v-1cf27b2a {
+		display: flex;
+		flex-direction: column;
+		gap: 20rpx;
+		width: 100%;
+		max-width: 500rpx;
+}
+.test-buttons button.data-v-1cf27b2a {
+		margin: 0;
+}
+	
+	/* 验证区域样式 */
+.verification-section.data-v-1cf27b2a {
+		width: 100%;
+		max-width: 500rpx;
+		background-color: #f8f9fa;
+		border-radius: 16rpx;
+		padding: 30rpx;
+		margin-bottom: 40rpx;
+		border: 2rpx solid #e9ecef;
+}
+.section-title.data-v-1cf27b2a {
+		font-size: 32rpx;
+		font-weight: bold;
+		color: #007aff;
+		display: block;
+		margin-bottom: 20rpx;
+		text-align: center;
+}
+.verification-info.data-v-1cf27b2a {
+		display: flex;
+		flex-direction: column;
+		gap: 12rpx;
+}
+.info-text.data-v-1cf27b2a {
+		font-size: 24rpx;
+		color: #333;
+		line-height: 1.5;
+		padding: 8rpx 0;
+		border-bottom: 1rpx solid #e9ecef;
+}
+.info-text.data-v-1cf27b2a:last-child {
+		border-bottom: none;
+}
+	
+	/* 对比区域样式 */
+.comparison-section.data-v-1cf27b2a {
+		width: 100%;
+		max-width: 500rpx;
+		background-color: #fff3cd;
+		border-radius: 16rpx;
+		padding: 30rpx;
+		margin-bottom: 40rpx;
+		border: 2rpx solid #ffeaa7;
+}
+.comparison-info.data-v-1cf27b2a {
+		display: flex;
+		flex-direction: column;
+		gap: 15rpx;
+		align-items: center;
+}
+.current-status.data-v-1cf27b2a {
+		font-size: 28rpx;
+		font-weight: bold;
+		color: #e67e22;
+		text-align: center;
+		padding: 12rpx 0;
+		background-color: rgba(230, 126, 34, 0.1);
+		border-radius: 8rpx;
+		width: 100%;
+}
+.switch-hint.data-v-1cf27b2a {
+		font-size: 22rpx;
+		color: #666;
+		text-align: center;
+		line-height: 1.4;
+}

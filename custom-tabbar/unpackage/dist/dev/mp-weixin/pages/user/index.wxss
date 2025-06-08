@@ -1,0 +1,22 @@
+
+.content.data-v-79e6a490 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
+}
+.text-area.data-v-79e6a490 {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.title.data-v-79e6a490 {
+	font-size: 36rpx;
+	color: #333;
+	margin-bottom: 20rpx;
+}
+.desc.data-v-79e6a490 {
+	font-size: 28rpx;
+	color: #666;
+}

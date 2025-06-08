@@ -1,0 +1,24 @@
+/* 使用系统默认字体，通过Unicode字符显示图标 */
+.uni-icon {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: normal;
+  line-height: 1;
+}
+
+/* 图标字符映射 - 使用emoji和特殊字符 */
+.icon-home:before { content: '🏠'; }              /* 首页图标 */
+.icon-category:before { content: '📂'; }          /* 分类图标 */
+.icon-cart:before { content: '🛒'; }              /* 购物车图标 */
+.icon-user:before { content: '👤'; }              /* 用户图标 */
+.icon-arrow-up:before { content: '⬆️'; }          /* 向上箭头 */
+.icon-add:before { content: '➕'; }                /* 加号图标 */
+
+/* 为了兼容，也定义Unicode编码版本 */
+.unicode-home { content: '\1F3E0'; }              /* 🏠 */
+.unicode-category { content: '\1F4C2'; }          /* 📂 */
+.unicode-cart { content: '\1F6D2'; }              /* 🛒 */
+.unicode-user { content: '\1F464'; }              /* 👤 */
+.unicode-arrow-up { content: '\2B06\FE0F'; }      /* ⬆️ */
+.unicode-add { content: '\2795'; }                /* ➕ */ 

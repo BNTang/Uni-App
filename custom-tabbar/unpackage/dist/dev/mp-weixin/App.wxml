@@ -1,0 +1,1 @@
+<view id="app"><custom-tabbar wx:if="{{c}}" class="r" u-r="customTabbar" bindtabChange="{{b}}" u-i="0036c3c4-0" bind:__l="__l" u-p="{{c}}"/></view>

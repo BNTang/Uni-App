@@ -1,0 +1,16 @@
+{
+  "pages": [
+    "pages/main-container/main-container",
+    "pages/index/index",
+    "pages/category/index",
+    "pages/cart/index",
+    "pages/user/index"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "自定义Tabbar",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "usingComponents": {}
+}

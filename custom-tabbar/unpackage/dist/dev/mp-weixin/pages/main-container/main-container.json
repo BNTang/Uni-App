@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "高级自定义TabBar",
+  "navigationStyle": "default",
+  "usingComponents": {
+    "index-page": "../index/index",
+    "category-page": "../category/index",
+    "cart-page": "../cart/index",
+    "user-page": "../user/index"
+  }
+}

@@ -1,0 +1,344 @@
+
+.custom-tabbar.data-v-51c48e3c {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 9999;
+	display: flex;
+	background-color: #ffffff;
+	border-top: 1rpx solid #e5e5e5;
+
+
+
+
+	padding-bottom: env(safe-area-inset-bottom);
+}
+.custom-tabbar.horizontal.data-v-51c48e3c {
+	flex-direction: row;
+	height: calc(100rpx + env(safe-area-inset-bottom));
+	align-items: center;
+}
+.custom-tabbar.vertical.data-v-51c48e3c {
+	flex-direction: column;
+	width: 120rpx;
+	height: 100vh;
+	top: 0;
+	bottom: auto;
+	right: auto;
+	border-top: none;
+	border-right: 1rpx solid #e5e5e5;
+}
+.tabbar-item.data-v-51c48e3c {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	overflow: hidden; /* 确保水波纹不溢出 */
+	transform: translateY(0);
+}
+.horizontal .tabbar-item.data-v-51c48e3c {
+	padding: 10rpx;
+	min-height: 100rpx;
+}
+.vertical .tabbar-item.data-v-51c48e3c {
+	padding: 20rpx 10rpx;
+	margin-bottom: 20rpx;
+}
+.vertical .tabbar-item.active.data-v-51c48e3c {
+	transform: translateX(8rpx) scale(1.05);
+	box-shadow: 4rpx 0 12rpx rgba(0, 122, 255, 0.15);
+	border-radius: 0 24rpx 24rpx 0;
+	background: linear-gradient(90deg, rgba(0, 122, 255, 0.05) 0%, transparent 100%);
+}
+.vertical .tabbar-item.data-v-51c48e3c:hover {
+	transform: translateX(4rpx) scale(1.02);
+}
+.horizontal .tabbar-item.active.data-v-51c48e3c {
+	transform: translateY(-4rpx) scale(1.05);
+	box-shadow: 0 4rpx 12rpx rgba(0, 122, 255, 0.15);
+}
+.horizontal .tabbar-item.data-v-51c48e3c:hover {
+	transform: translateY(-2rpx) scale(1.02);
+}
+.tabbar-icon.data-v-51c48e3c {
+	position: relative;
+	margin-bottom: 8rpx;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	transform: scale(1);
+}
+.tabbar-item.active .tabbar-icon.data-v-51c48e3c {
+	transform: scale(1.1);
+	animation: iconBounce-51c48e3c 0.4s ease-out;
+}
+.vertical .tabbar-icon.data-v-51c48e3c {
+	margin-bottom: 12rpx;
+}
+.icon-image.data-v-51c48e3c {
+	width: 48rpx;
+	height: 48rpx;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	opacity: 0.8;
+}
+.tabbar-item.active .icon-image.data-v-51c48e3c {
+	opacity: 1;
+	filter: brightness(1.1);
+}
+.vertical .icon-image.data-v-51c48e3c {
+	width: 40rpx;
+	height: 40rpx;
+}
+.tabbar-text.data-v-51c48e3c {
+	font-size: 20rpx;
+	text-align: center;
+	transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+	opacity: 0.7;
+	transform: translateY(0);
+	font-weight: 400;
+}
+.tabbar-item.active .tabbar-text.data-v-51c48e3c {
+	opacity: 1;
+	transform: translateY(-2rpx);
+	font-weight: 500;
+	animation: textGlow-51c48e3c 0.4s ease-out;
+}
+.vertical .tabbar-text.data-v-51c48e3c {
+	font-size: 18rpx;
+}
+.red-dot.data-v-51c48e3c {
+	position: absolute;
+	top: -4rpx;
+	right: -4rpx;
+	width: 16rpx;
+	height: 16rpx;
+	background-color: #ff0000;
+	border-radius: 50%;
+	animation: pulse-51c48e3c 2s infinite;
+	transform: scale(1);
+	transition: transform 0.3s ease;
+}
+.tabbar-item.active .red-dot.data-v-51c48e3c {
+	transform: scale(1.1);
+	animation: pulse-51c48e3c 1.5s infinite;
+}
+.badge.data-v-51c48e3c {
+	position: absolute;
+	top: -8rpx;
+	right: -8rpx;
+	min-width: 32rpx;
+	height: 24rpx;
+	background-color: #ff0000;
+	border-radius: 12rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 0 6rpx;
+	animation: bounce-51c48e3c 3s infinite;
+	transform: scale(1);
+	transition: transform 0.3s ease;
+}
+.tabbar-item.active .badge.data-v-51c48e3c {
+	transform: scale(1.05);
+	animation: bounce-51c48e3c 2s infinite;
+}
+.badge-text.data-v-51c48e3c {
+	font-size: 16rpx;
+	color: #ffffff;
+	line-height: 1;
+}
+
+/* 自定义TabBar标识样式 */
+.custom-tabbar-indicator.data-v-51c48e3c {
+	position: absolute;
+	top: 2rpx;
+	right: 2rpx;
+	z-index: 10000;
+	background-color: rgba(0, 122, 255, 0.1);
+	border-radius: 50%;
+	width: 24rpx;
+	height: 24rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0.7;
+}
+.indicator-text.data-v-51c48e3c {
+	font-size: 12rpx;
+}
+
+/* 水波纹效果样式 */
+.ripple-container.data-v-51c48e3c {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	pointer-events: none;
+	overflow: hidden;
+}
+.ripple.data-v-51c48e3c {
+	position: absolute;
+	border-radius: 50%;
+	background-color: rgba(255, 255, 255, 0.6);
+	transform: scale(0);
+	opacity: 1;
+	pointer-events: none;
+}
+
+/* 居中水波纹（用于小程序端） */
+.ripple-center.data-v-51c48e3c {
+	width: 80rpx;
+	height: 80rpx;
+	left: 50%;
+	top: 50%;
+	margin-left: -40rpx;
+	margin-top: -40rpx;
+}
+.ripple-animate.data-v-51c48e3c {
+	animation: ripple-effect-51c48e3c 0.6s ease-out;
+}
+@keyframes ripple-effect-51c48e3c {
+0% {
+		transform: scale(0);
+		opacity: 1;
+}
+100% {
+		transform: scale(1);
+		opacity: 0;
+}
+}
+
+/* 图标弹跳动画 */
+@keyframes iconBounce-51c48e3c {
+0% {
+		transform: scale(1);
+}
+50% {
+		transform: scale(1.2);
+}
+100% {
+		transform: scale(1.1);
+}
+}
+
+/* 文字发光动画 */
+@keyframes textGlow-51c48e3c {
+0% {
+		transform: translateY(0);
+		opacity: 0.7;
+}
+50% {
+		transform: translateY(-4rpx);
+		opacity: 1;
+		text-shadow: 0 0 8rpx rgba(0, 122, 255, 0.3);
+}
+100% {
+		transform: translateY(-2rpx);
+		opacity: 1;
+		text-shadow: none;
+}
+}
+
+/* 选中项整体动画 */
+@keyframes itemActivate-51c48e3c {
+0% {
+		transform: translateY(0) scale(1);
+}
+30% {
+		transform: translateY(-6rpx) scale(1.1);
+}
+100% {
+		transform: translateY(-4rpx) scale(1.05);
+}
+}
+
+/* 红点脉冲动画 */
+@keyframes pulse-51c48e3c {
+0%, 100% {
+		transform: scale(1);
+		opacity: 1;
+}
+50% {
+		transform: scale(1.2);
+		opacity: 0.8;
+}
+}
+
+/* 角标弹跳动画 */
+@keyframes bounce-51c48e3c {
+0%, 100% {
+		transform: translateY(0) scale(1);
+}
+25% {
+		transform: translateY(-2rpx) scale(1.05);
+}
+50% {
+		transform: translateY(0) scale(1);
+}
+75% {
+		transform: translateY(-1rpx) scale(1.02);
+}
+}
+
+/* 不同主题的水波纹颜色 */
+.custom-tabbar.light .ripple.data-v-51c48e3c {
+	background-color: rgba(0, 122, 255, 0.3);
+}
+.custom-tabbar.dark .ripple.data-v-51c48e3c {
+	background-color: rgba(255, 255, 255, 0.4);
+}
+
+/* 选中项的水波纹效果 */
+.tabbar-item.active .ripple.data-v-51c48e3c {
+	background-color: rgba(0, 122, 255, 0.5);
+}
+
+/* H5端适配 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* 小程序端适配 */
+.custom-tabbar.data-v-51c48e3c {
+	/* 小程序端特殊样式 */
+}
+
+
+/* App端适配 */
+
+
+
+
+
+
+
+/* 每个页面公共css */
+#app {
+	height: 100vh;
+}
+
+/* 为页面内容添加底部间距，避免被TabBar遮挡 */
+page {
+	padding-bottom: calc(100rpx + env(safe-area-inset-bottom));
+}
+page{--status-bar-height:25px;--top-window-height:0px;--window-top:0px;--window-bottom:0px;--window-left:0px;--window-right:0px;--window-magin:0px}[data-c-h="true"]{display: none !important;}
